@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Sans+SC:wght@400;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   <script>
     tailwind.config = {
@@ -27,7 +29,9 @@
               darker: '#111827',
               cyan: '#00f0ff',
               purple: '#b026ff',
-              gold: '#ffd700'
+              gold: '#ffd700',
+              magenta: '#ff2a6d',
+              lime: '#39ff14'
             }
           }
         }
@@ -65,12 +69,12 @@
     }
     .mahjong-tile {
       position: absolute;
-      top: -10vh; /* 确保从屏幕上方开始降落 */
+      top: -10vh;
       display: inline-block;
       user-select: none;
       pointer-events: none;
       animation: fall linear infinite;
-      z-index: 1; /* 相对于父容器的层级 */
+      z-index: 1;
       font-family: "Noto Sans SC", "Noto Sans JP", sans-serif;
     }
     
@@ -78,14 +82,13 @@
       display: block;
       width: 10%;
       height: 10%;
-      overflow: visible; /* 关键：防止 SVG 内部裁剪 */
+      overflow: visible;
     }
 
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #0a0a16; }
     ::-webkit-scrollbar-thumb { background: #b026ff; border-radius: 4px; }
 
-    /* 页面切换动画 */
     .page-section {
       display: none;
       animation: fadeIn 0.5s ease-out;
@@ -98,7 +101,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 导航按钮激活状态 */
     .nav-btn {
       position: relative;
       transition: all 0.3s ease;
@@ -133,7 +135,6 @@
         <button onclick="switchPage('results')" id="nav-results" class="nav-btn text-gray-300 hover:text-cyber-cyan" data-i18n="nav.results">赛果</button>
         <button onclick="toggleLang()" id="lang-toggle" class="px-4 py-1 border border-cyber-purple text-cyber-purple hover:bg-cyber-purple hover:text-white rounded transition-all">日本語</button>
       </div>
-      <!-- 移动端菜单按钮 -->
       <div class="md:hidden flex items-center space-x-4">
         <button onclick="toggleLang()" id="lang-toggle-mobile" class="px-3 py-1 text-xs border border-cyber-purple text-cyber-purple rounded">日本語</button>
         <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-cyber-cyan">
@@ -141,7 +142,6 @@
         </button>
       </div>
     </div>
-    <!-- 移动端下拉菜单 -->
     <div id="mobile-menu" class="hidden md:hidden bg-cyber-dark/95 border-t border-cyber-cyan/20">
       <div class="flex flex-col p-4 space-y-4 font-bold text-sm">
         <button onclick="switchPage('info')" class="text-left text-gray-300 hover:text-cyber-cyan py-2" data-i18n="nav.home">比赛信息</button>
@@ -151,38 +151,21 @@
     </div>
   </nav>
 
-  <main class="relative z-10 pt-16 min-h-screen">
+  <main class="relative z-10 pt-16 min-h-screen flex flex-col">
     
-    <!-- 页面 1: 比赛信息 -->
-    <section id="page-info" class="page-section active">
+    <section id="page-info" class="page-section active flex-grow">
       <section id="hero" class="min-h-fit md:min-h-[calc(100vh-4rem)] flex items-start justify-center pt-8 pb-16 md:pt-4 md:pb-0">
         <div class="cyber-border bg-cyber-dark/90 p-10 md:p-20 border border-cyber-cyan/40 rounded-3xl text-center max-w-4xl mx-4 shadow-2xl relative overflow-hidden">
           
           <div class="relative inline-flex items-center justify-center min-h-[200px] min-w-[200px] md:min-h-[350px] md:min-w-[350px] mb-8">
-            
-            <img src="./images/PKU.png" 
-                class="absolute -top-16 -left-10 md:-top-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" 
-                alt="decoration-tl">
+            <img src="./images/PKU.png" class="absolute -top-16 -left-10 md:-top-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tl">
+            <img src="./images/UTokyo.png" class="absolute -top-16 -right-10 md:-top-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tr">
+            <img src="./images/KyotoU.png" class="absolute -bottom-16 -left-10 md:-bottom-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-bl">
+            <img src="./images/THU.png" class="absolute -bottom-16 -right-10 md:-bottom-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-br">
 
-            <img src="./images/UTokyo.png" 
-                class="absolute -top-16 -right-10 md:-top-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" 
-                alt="decoration-tr">
-
-            <img src="./images/KyotoU.png" 
-                class="absolute -bottom-16 -left-10 md:-bottom-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" 
-                alt="decoration-bl">
-
-            <img src="./images/THU.png" 
-                class="absolute -bottom-16 -right-10 md:-bottom-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" 
-                alt="decoration-br">
-
-            <h1 data-i18n="hero.title" class="relative z-10 text-5xl md:text-8xl font-black neon-text-cyan font-cjk">
-              </h1>
+            <h1 data-i18n="hero.title" class="relative z-10 text-5xl md:text-8xl font-black neon-text-cyan font-cjk"></h1>
           </div>
-
-          <p data-i18n="hero.subtitle" class="relative z-20 font-cyber text-xl md:text-3xl text-cyber-purple font-bold tracking-[0.3em] mb-8 mt-12 md:mt-12">
-            </p>
-          
+          <p data-i18n="hero.subtitle" class="relative z-20 font-cjk text-2xl md:text-3xl text-cyber-cyan font-black tracking-widest md:tracking-[0.5em] ja:tracking-wide ja:md:tracking-[0.2em] mb-8 mt-12 [text-shadow:0_0_12px_rgba(0,240,255,0.8),0_0_24px_rgba(168,85,247,0.5)]"> </p>
           <div class="relative z-10 border-y border-cyber-cyan/30 py-6">
             <div class="text-3xl md:text-5xl font-cyber font-bold mb-2">2026.05.24 (Sun.)</div>
             <p data-i18n="hero.location" class="text-gray-400"> </p>
@@ -190,17 +173,15 @@
         </div>
       </section>
 
-      <section id="info" class="max-w-7xl mx-auto px-4 py-20">
-        <div class="mb-20">
+      <section id="info" class="max-w-7xl mx-auto px-4 pt-20 pb-4">
+        <div class="mb-16">
           <h2 data-i18n="rules.title" class="text-3xl md:text-4xl font-bold mb-10 flex items-center font-cjk">
             <span class="w-2 h-8 bg-cyber-cyan mr-4 shadow-[0_0_10px_#00f0ff]"></span> 比赛规则 & 赛程
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-cyber-darker/60 p-8 rounded-xl cyber-border">
               <h3 data-i18n="rules.formatTitle" class="text-xl text-cyber-cyan font-bold mb-4 italic">赛制说明</h3>
-              <p data-i18n="rules.formatDesc" class="text-gray-300 leading-relaxed text-sm">
-                 
-              </p>
+              <p data-i18n="rules.formatDesc" class="text-gray-300 leading-relaxed text-sm"></p>
             </div>
             <div class="bg-cyber-darker/60 p-8 rounded-xl cyber-border">
               <h3 data-i18n="rules.scheduleTitle" class="text-xl text-cyber-purple font-bold mb-4 italic">赛程安排</h3>
@@ -210,17 +191,17 @@
             </div>
             <div class="bg-cyber-darker/60 p-8 rounded-xl cyber-border">
               <h3 data-i18n="rules.prizeTitle" class="text-xl text-cyber-gold font-bold mb-4 italic">奖项设置</h3>
-              <p data-i18n="rules.prizeDesc" class="text-gray-300 leading-relaxed text-sm">
-                <!-- 总奖金池 -->
-              </p>
+              <p data-i18n="rules.prizeDesc" class="text-gray-300 leading-relaxed text-sm"></p>
             </div>
           </div>
         </div>
 
-        <div class="mb-20">
-          <h2 data-i18n="staff.title" class="text-3xl md:text-4xl font-bold mb-10 flex items-center font-cjk">
+        <div class="mb-16">
+          <h2 data-i18n="staff.title" class="text-3xl md:text-4xl font-bold mb-4 flex items-center font-cjk">
             <span class="w-2 h-8 bg-cyber-purple mr-4 shadow-[0_0_10px_#b026ff]"></span> 大会人员
           </h2>
+          <p data-i18n="staff.hint" class="text-gray-400 text-sm mb-4 ml-6 italic">（点击卡片可跳转直播或个人主页）</p>
+          
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <a href="https://www.youtube.com/@-asapin-4178" target="_blank" class="block bg-cyber-darker/60 p-6 rounded-xl cyber-border flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
               <img src="./images/asapin.jpg" class="w-24 h-24 rounded-full border-2 border-cyber-cyan mb-4 object-cover">
@@ -241,34 +222,71 @@
               <p data-i18n="staff.person3.desc" class="text-xs text-gray-400 mt-2"> </p>
             </a>
             <a href="https://space.bilibili.com/2838193" target="_blank" class="block bg-cyber-darker/60 p-6 rounded-xl cyber-border flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-              <img src="./images/me.jpg" class="w-24 h-24 rounded-full border-2 border-cyber-purple mb-4 object-cover">
-              <h4 data-i18n="staff.person4.name" class="font-bold text-white"> </h4>
-              <span data-i18n="staff.person4.role" class="text-xs text-cyber-purple px-2 py-1 bg-cyber-purple/10 rounded-full my-2"> </span>
-              <p data-i18n="staff.person4.desc" class="text-xs text-gray-400 mt-2"> </p>
+              <img src="./images/me.jpg" 
+                  class="w-24 h-24 rounded-full border-2 border-cyber-gold mb-4 object-cover">
+              <h4 data-i18n="staff.person4.name" class="font-bold text-white"></h4>
+              <span data-i18n="staff.person4.role" 
+                    class="text-xs text-cyber-gold px-2 py-1 bg-cyber-gold/10 rounded-full my-2"></span>
+              <p data-i18n="staff.person4.desc" class="text-xs text-gray-400 mt-2"></p>
             </a>
           </div>
         </div>
+
+        <!-- <div class="mb-16">
+          <h2 data-i18n="other.title" class="text-3xl md:text-4xl font-bold mb-10 flex items-center font-cjk">
+            <span class="w-2 h-8 bg-cyber-gold mr-4 shadow-[0_0_10px_#ffd700]"></span> 其他信息
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="bg-cyber-darker/60 p-6 rounded-xl cyber-border border-cyber-cyan/30">
+              <h3 data-i18n="other.streamsTitle" class="text-xl text-cyber-cyan font-bold mb-6 italic border-b border-cyber-cyan/20 pb-2"></h3>
+              <div class="space-y-4">
+                <a href="#" target="_blank" class="flex items-center p-3 rounded-lg hover:bg-white/5 transition-colors group">
+                  <img src="" onerror="this.src='https://via.placeholder.com/100/111122/00f0ff?text=Live'" class="w-12 h-12 rounded-full border border-cyber-cyan object-cover mr-4">
+                  <div>
+                    <h4 data-i18n="other.stream1.name" class="font-bold text-gray-200 group-hover:text-cyber-cyan transition-colors"></h4>
+                    <p data-i18n="other.stream1.note" class="text-xs text-gray-400 mt-1"></p>
+                  </div>
+                </a>
+                </div>
+            </div>
+
+            <div class="bg-cyber-darker/60 p-6 rounded-xl cyber-border border-cyber-gold/30">
+              <h3 data-i18n="other.sponsorsTitle" class="text-xl text-cyber-gold font-bold mb-6 italic border-b border-cyber-gold/20 pb-2"></h3>
+              <div class="space-y-4">
+                <a href="#" target="_blank" class="flex items-center p-3 rounded-lg hover:bg-white/5 transition-colors group">
+                  <img src="" onerror="this.src='https://via.placeholder.com/100/111122/ffd700?text=Sponsor'" class="w-12 h-12 rounded-full border border-cyber-gold object-cover mr-4">
+                  <div>
+                    <h4 data-i18n="other.sponsor1.name" class="font-bold text-gray-200 group-hover:text-cyber-gold transition-colors"></h4>
+                    <p data-i18n="other.sponsor1.note" class="text-xs text-gray-400 mt-1"></p>
+                  </div>
+                </a>
+                </div>
+            </div>
+
+          </div>
+        </div> -->
+
       </section>
-      <section class="py-10 border-t border-white/10">
+      <section class="py-5 border-t border-white/10">
           <p class="text-center text-slate-400 font-cjk text-sm md:text-base tracking-wider">
               <span data-i18n="staff.note"></span>
-              <span class="text-cyan-400">零之审判者</span>！
+              <span data-i18n="staff.id" class="text-cyan-400"></span>！
           </p>
       </section>
     </section>
 
-    <!-- 页面 2: 参赛队伍 -->
-    <section id="page-teams" class="page-section">
+    <section id="page-teams" class="page-section flex-grow">
       <section id="teams" class="max-w-7xl mx-auto px-4 py-16 min-h-[calc(100vh-4rem)]">
         <h2 data-i18n="teams.title" class="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center font-cjk">
           <i class="fa-solid fa-users mr-4 text-cyber-cyan"></i> 参赛队伍
         </h2>
-        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto">
+        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto mb-8">
             <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <img src="https://via.placeholder.com/200/111122/00f0ff?text=Team+A" class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
+              <img src=" " class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
               <div class="text-center md:text-left">
-                <h3 class="text-3xl font-cyber font-bold text-white mb-2"> </h3>
-                <p data-i18n="teams.team1.desc" class="text-gray-400 text-sm italic"> </p>
+                <h3 class="text-3xl font-cyber font-bold text-white mb-2" data-i18n="teams.team1.desc"> </h3>
+                <p data-i18n="teams.team1.info" class="text-gray-400 text-sm italic"> </p>
               </div>
             </div>
             <div class="overflow-x-auto rounded-lg border border-white/10">
@@ -287,12 +305,12 @@
               </table>
             </div>
         </div>
-        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto">
+        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto mb-8">
             <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <img src="https://via.placeholder.com/200/111122/00f0ff?text=Team+A" class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
+              <img src=" " class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
               <div class="text-center md:text-left">
-                <h3 class="text-3xl font-cyber font-bold text-white mb-2"> </h3>
-                <p data-i18n="teams.team2.desc" class="text-gray-400 text-sm italic"> </p>
+                <h3 class="text-3xl font-cyber font-bold text-white mb-2" data-i18n="teams.team2.desc"> </h3>
+                <p data-i18n="teams.team2.info" class="text-gray-400 text-sm italic"> </p>
               </div>
             </div>
             <div class="overflow-x-auto rounded-lg border border-white/10">
@@ -311,12 +329,12 @@
               </table>
             </div>
         </div>
-        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto">
+        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto mb-8">
             <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <img src="https://via.placeholder.com/200/111122/00f0ff?text=Team+A" class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
+              <img src=" " class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
               <div class="text-center md:text-left">
-                <h3 class="text-3xl font-cyber font-bold text-white mb-2"> </h3>
-                <p data-i18n="teams.team3.desc" class="text-gray-400 text-sm italic"> </p>
+                <h3 class="text-3xl font-cyber font-bold text-white mb-2" data-i18n="teams.team3.desc"> </h3>
+                <p data-i18n="teams.team3.info" class="text-gray-400 text-sm italic"> </p>
               </div>
             </div>
             <div class="overflow-x-auto rounded-lg border border-white/10">
@@ -335,12 +353,12 @@
               </table>
             </div>
         </div>
-        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto">
+        <div class="bg-white/5 rounded-2xl p-8 cyber-border max-w-4xl mx-auto mb-8">
             <div class="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <img src="https://via.placeholder.com/200/111122/00f0ff?text=Team+A" class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
+              <img src=" " class="w-32 h-32 object-contain bg-black/30 rounded-lg p-2 border border-cyber-cyan/50">
               <div class="text-center md:text-left">
-                <h3 class="text-3xl font-cyber font-bold text-white mb-2"> </h3>
-                <p data-i18n="teams.team4.desc" class="text-gray-400 text-sm italic"> </p>
+                <h3 class="text-3xl font-cyber font-bold text-white mb-2" data-i18n="teams.team4.desc"> </h3>
+                <p data-i18n="teams.team4.info" class="text-gray-400 text-sm italic"> </p>
               </div>
             </div>
             <div class="overflow-x-auto rounded-lg border border-white/10">
@@ -362,8 +380,7 @@
       </section>
     </section>
 
-    <!-- 页面 3: 赛果 -->
-    <section id="page-results" class="page-section">
+    <section id="page-results" class="page-section flex-grow">
       <section id="results" class="max-w-7xl mx-auto px-4 py-20 min-h-[calc(100vh-4rem)]">
         <h2 data-i18n="results.title" class="text-4xl md:text-5xl font-bold mb-16 text-center text-cyber-gold neon-text-gold font-cjk">最终赛果</h2>
         <div id="champion-container" class="bg-gradient-to-b from-cyber-gold/20 to-transparent p-10 rounded-3xl border border-cyber-gold/40 mb-20 text-center max-w-2xl mx-auto"></div>
@@ -387,14 +404,6 @@
                   <td class="px-6 py-4 font-bold text-white bg-white/5">Round 1</td>
                   <td class="px-6 py-4 text-cyber-cyan">+42.5</td><td class="px-6 py-4 text-red-400">-15.2</td><td class="px-6 py-4">+8.4</td><td class="px-6 py-4 text-red-400">-35.7</td>
                 </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold text-white bg-white/5">Round 2</td>
-                  <td class="px-6 py-4 text-cyber-cyan">+31.0</td><td class="px-6 py-4">+12.8</td><td class="px-6 py-4 text-red-400">-10.5</td><td class="px-6 py-4 text-red-400">-33.3</td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 font-bold text-white bg-white/5">TOTAL</td>
-                  <td class="px-6 py-4 text-cyber-gold font-bold">+73.5</td><td class="px-6 py-4 font-bold">-2.4</td><td class="px-6 py-4 text-red-500">-2.1</td><td class="px-6 py-4 text-red-500">-69.0</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -402,52 +411,76 @@
       </section>
     </section>
 
-    <footer class="bg-black py-10 text-center border-t border-cyber-cyan/20 mt-auto">
-      <p data-i18n="footer.copyright" class="text-gray-500 font-cyber text-sm">© 2026 Mahjong Official.</p>
+    <footer class="bg-black py-4 border-t border-cyber-cyan/20 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-500 font-cyber text-sm">
+        <p data-i18n="footer.copyright" class="mb-4 md:mb-0">© 2026 Mahjong Official.</p>
+        
+        <div class="flex items-center space-x-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+          <i class="fa-solid fa-eye text-cyber-cyan/60"></i>
+          <span data-i18n="footer.views">访问人次:</span>
+          <span id="busuanzi_value_site_pv" class="text-cyber-cyan font-bold font-cjk"></span>
+        </div>
+      </div>
     </footer>
   </main>
 
   <script>
     const i18nConfig = {
+      "page.title": { zh: "第一届中日高校麻将交流赛", ja: "第1回日中大学麻雀交流戦" },
       "nav.home": { zh: "比赛信息", ja: "大会情報" },
       "nav.teams": { zh: "参赛队伍", ja: "出場チーム" },
       "nav.results": { zh: "赛果", ja: "試合結果" },
       "hero.title": { zh: "第一届 中日高校麻将交流赛", ja: "第1回 日中大学麻雀交流戦" },
       "hero.subtitle": { zh: "北大🀄东大🀄清华🀄京大", ja: "東京大🀄清華大🀄京都大🀄北京大" },
-      "hero.location": { zh: "18:00(北京时间) 雀魂大会室 / 线上同步直播", ja: "19:00 (日本時間) 雀魂大会室 / オンライン同時配信" },
+      "hero.location": { zh: "18:00(北京时间) 雀魂赛事ID: 152268 / 线上同步直播", ja: "19:00 (日本時間) 雀魂大会ID: 152268 / オンライン同時配信" },
       "rules.title": { zh: "比赛内容", ja: "大会内容" },
       "rules.formatTitle": { zh: "赛制说明", ja: "ルール" },
       "rules.formatDesc": { 
-        zh: "共四个半庄。每队各半庄派一人出场，每个半庄队伍的起始分数继承上一半庄。使用雀魂段位战规则，无飞人，南四亲家和牌或流局听牌时任意点数都连庄。", 
-        ja: "各チーム、半荘ごとに1名が出場します。各半荘の持ち点は前の試合の結果を引き継ぎます。雀魂段位戦ルールを採用。トビなし。南4局の親が和了またはテンパイの場合、点数に関わらず連荘となります。" 
+        zh: "共四个半庄。每队各半庄派一人出场，最后比较四个半庄的总分。使用雀魂王座段位战规则。无飞人，无和了终局，无听牌终局，无西入。", 
+        ja: "全4半荘。各チーム各半荘に1名が出場し、計4半荘の合計スコアを競う。雀魂「王座の間」段位戦ルールを適用。飛びなし、アガリ止めなし、テンパイ止めなし、西入なし。" 
       },
       "rules.scheduleTitle": { zh: "赛程安排", ja: "スケジュール" },
       "rules.prizeTitle": { zh: "奖项设置", ja: "賞金" },
       "rules.prizeDesc": { zh: "冠军：1288 RMB <br>亚军：450 RMB", ja: "優勝：30,000円 <br>準優勝：10,000円" },
       "rules.event1": { zh: "18:00 (北京时间)", ja: "19:00 (日本時間)" },
       "rules.sc1": { zh: "比赛开始", ja: "対局開始" },
-      "staff.title": { zh: "大会人员", ja: "運営・実況" },
+      "staff.title": { zh: "大会人员", ja: "実況・運営" },
+      "staff.hint": { zh: "（点击卡片可跳转直播或个人主页）", ja: "（カードをクリックすると配信枠や個人ページに遷移します）" },
       "staff.person1.name": { zh: "朝仓康心", ja: "朝倉康心" },
-      "staff.person1.role": { zh: "日方直播解说", ja: "日本語実況解説" },
+      "staff.person1.role": { zh: "youtube直播解说", ja: "youtube実況解説" },
       "staff.person1.desc": { 
         zh: "MLeague解说 U-NEXT pirates前成员 最高位战A2联赛所属 初代11代天凤位", 
         ja: "Mリーグ解説 元U-NEXT pirates 最高位戦A2リーグ所属 初代11代天鳳位" 
       },
       "staff.person2.name": { zh: "佐仓•M•沙耶加", ja: "佐倉・M・沙耶加" },
-      "staff.person2.role": { zh: "中方直播解说", ja: "中国語実況解説" },
+      "staff.person2.role": { zh: "bilibili直播解说", ja: "bilibili実況解説" },
       "staff.person2.desc": { zh: "雀魂四象战主持人 雀魂魂天×4 天凤凤凰", ja: "雀魂四象戦公式MC 雀魂魂天×4 天鳳鳳凰" },
       "staff.person3.name": { zh: "火龙果说电影", ja: "火龍果（火龙果说电影）" },
-      "staff.person3.role": { zh: "中方直播解说", ja: "中国語実況解説" },
+      "staff.person3.role": { zh: "bilibili直播解说", ja: "bilibili実況解説" },
       "staff.person3.desc": { zh: "bilibili著名麻将主播 雀魂绝艺总纲", ja: "bilibili人気麻雀配信者 「雀魂絶芸総綱」" },
       "staff.person4.name": { zh: "零之审判", ja: "零の審判" },
       "staff.person4.role": { zh: "主办", ja: "主催" },
       "staff.person4.desc": { zh: "雀魂魂天 天凤凤凰 北京大学学士学位 东京大学博士学位", ja: "雀魂魂天 天鳳鳳凰 北京大学学士 東京大学博士課程修了" },
-      "staff.note": { zh: "欢迎想要解说或赞助比赛的朋友私信主办B站ID：", ja: "実況解説やスポンサーをご希望の方は、主催者のbilibili IDまでDMをお送りください：" },
+      "staff.note": { zh: "欢迎想要直播解说或赞助比赛的朋友私信主办B站ID：", ja: "実況解説やスポンサーをご希望の方は、主催者のXまでDMをお送りください：" },
+      "staff.id": { zh: "零之审判者", ja: "零の審判" },
+      
+      "other.title": { zh: "其他信息", ja: "その他情報" },
+      "other.streamsTitle": { zh: "其他直播间", ja: "その他の配信枠" },
+      "other.sponsorsTitle": { zh: "赞助感谢", ja: "スポンサー様" },
+      "other.stream1.name": { zh: "默认直播间名字", ja: "デフォルト配信枠" },
+      "other.stream1.note": { zh: "bilibili直播间", ja: "youtube配信枠" },
+      "other.sponsor1.name": { zh: "默认赞助名", ja: "デフォルトスポンサー" },
+      "other.sponsor1.note": { zh: "赞助 xx 元", ja: "xx 元 協賛" },
+
       "teams.title": { zh: "参赛队伍（名单待定）", ja: "出場チーム（リスト未定）" },
       "teams.team1.desc": { zh: "北京大学", ja: "北京大学" },
+      "teams.team1.info": { zh: "北京大学校队", ja: "北京大学代表チーム" },
       "teams.team2.desc": { zh: "东京大学", ja: "東京大学" },
+      "teams.team2.info": { zh: "东京大学麻将社白负责组建", ja: "東京大学麻雀サークル白による結成" },
       "teams.team3.desc": { zh: "清华大学", ja: "清華大学" },
+      "teams.team3.info": { zh: "清华大学校队", ja: "清華大学代表チーム" },
       "teams.team4.desc": { zh: "京都大学", ja: "京都大学" },
+      "teams.team4.info": { zh: "京都大学竞技麻将社负责组建", ja: "京都大学競技麻雀サークルによる結成" },
       "table.col.nickname": { zh: "昵称", ja: "ニックネーム" },
       "table.col.role": { zh: "位置", ja: "ポジション" },
       "table.col.rank": { zh: "段位", ja: "段位" },
@@ -455,36 +488,31 @@
       "results.detailTitle": { zh: "局分详情", ja: "対局スコア詳細" },
       "results.championLabel": { zh: "冠军", ja: "優勝" },
       "champion.name": { zh: "✨ 队伍 ✨", ja: "✨ チーム ✨" },
-      "footer.copyright": { zh: "© 2026 中日高校麻将交流赛. All rights reserved.", ja: "© 2026 日中大学麻雀交流戦. All rights reserved." }
+      "footer.copyright": { zh: "© 2026 中日高校麻将交流赛. All rights reserved.", ja: "© 2026 日中大学麻雀交流戦. All rights reserved." },
+      "footer.views": { zh: "访问人次:", ja: "アクセス数:" }
     };
 
     let currentLang = 'zh';
     let currentPage = 'info';
 
     function switchPage(pageId) {
-      // 隐藏所有页面
       document.querySelectorAll('.page-section').forEach(section => {
         section.classList.remove('active');
       });
       
-      // 显示目标页面
       const targetPage = document.getElementById('page-' + pageId);
       if (targetPage) {
         targetPage.classList.add('active');
         currentPage = pageId;
       }
       
-      // 更新导航按钮状态
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('active');
       });
       const activeBtn = document.getElementById('nav-' + pageId);
       if (activeBtn) activeBtn.classList.add('active');
       
-      // 关闭移动端菜单
       document.getElementById('mobile-menu').classList.add('hidden');
-      
-      // 滚动到顶部
       window.scrollTo(0, 0);
     }
 
@@ -494,10 +522,16 @@
     }
 
     function updateDOMText() {
+      // 更新网页头部 <title> 标签
+      document.title = i18nConfig["page.title"][currentLang];
+      // 更改 HTML 语言属性，利于浏览器翻译与 SEO
+      document.documentElement.lang = currentLang;
+
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (i18nConfig[key]) el.innerHTML = i18nConfig[key][currentLang];
       });
+      
       document.getElementById('lang-toggle').innerText = currentLang === 'zh' ? '日本語' : '中文';
       const mobileToggle = document.getElementById('lang-toggle-mobile');
       if (mobileToggle) mobileToggle.innerText = currentLang === 'zh' ? '日本語' : '中文';
@@ -507,6 +541,11 @@
     function toggleLang() {
       currentLang = currentLang === 'zh' ? 'ja' : 'zh';
       updateDOMText();
+      
+      // 需求1: 切换语言时，动态更新网址后缀，以便用户随时复制分享
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set('lang', currentLang);
+      window.history.pushState({}, '', newUrl);
     }
 
     function renderChampionSection() {
@@ -523,29 +562,29 @@
       `;
     }
 
-  //   function initMahjongBackground() {
-  //   const container = document.getElementById('bg-canvas');
-  //   const tiles = ['🀀','🀁','🀂','🀃','🀄','🀅','🀆','🀇','🀈','🀉','🀊','🀋','🀌','🀍','🀎','🀏','🀐','🀑','🀒','🀓','🀔','🀕','🀖','🀗','🀘','🀙','🀚','🀛','🀜','🀝','🀞','🀟','🀠','🀡','🀩','🀪','🀫'];
-  //   const count = 25;
+    // function initMahjongBackground() {
+    //   const container = document.getElementById('bg-canvas');
+    //   const tiles = ['🀀','🀁','🀂','🀃','🀄','🀅','🀆','🀇','🀈','🀉','🀊','🀋','🀌','🀍','🀎','🀏','🀐','🀑','🀒','🀓','🀔','🀕','🀖','🀗','🀘','🀙','🀚','🀛','🀜','🀝','🀞','🀟','🀠','🀡','🀩','🀪','🀫'];
+    //   const count = 25;
 
-  //   for (let i = 0; i < count; i++) {
-  //     const span = document.createElement('span');
-  //     span.className = 'mahjong-tile font-cjk';
-  //     span.innerText = tiles[Math.floor(Math.random() * tiles.length)];
-      
-  //     const left = Math.random() * 100;
-  //     const size = 1.5 + Math.random() * 3.5;
-  //     const duration = 15 + Math.random() * 25;
-  //     const delay = Math.random() * -30;
-      
-  //     span.style.left = `${left}vw`;
-  //     span.style.fontSize = `${size}rem`;
-  //     span.style.animationDuration = `${duration}s`;
-  //     span.style.animationDelay = `${delay}s`;
-      
-  //     container.appendChild(span);
-  //   }
-  // }
+    //   for (let i = 0; i < count; i++) {
+    //     const span = document.createElement('span');
+    //     span.className = 'mahjong-tile font-cjk';
+    //     span.innerText = tiles[Math.floor(Math.random() * tiles.length)];
+        
+    //     const left = Math.random() * 100;
+    //     const size = 1.5 + Math.random() * 3.5;
+    //     const duration = 15 + Math.random() * 25;
+    //     const delay = Math.random() * -30;
+        
+    //     span.style.left = `${left}vw`;
+    //     span.style.fontSize = `${size}rem`;
+    //     span.style.animationDuration = `${duration}s`;
+    //     span.style.animationDelay = `${delay}s`;
+        
+    //     container.appendChild(span);
+    //   }
+    // }
 
   // function initMahjongBackground() {
   //     const container = document.getElementById('bg-canvas');
@@ -608,12 +647,9 @@
   //     }
   //   }
 
-
     async function initMahjongBackground() {
       const container = document.getElementById('bg-canvas');
       if (!container) return;
-
-      // 1. 先把外部 SVG 加载进来，内嵌到当前页面
       try {
         const res = await fetch('./images/panel.color.svg');
         const svgText = await res.text();
@@ -625,7 +661,6 @@
         console.error('加载 SVG 失败:', e);
         return;
       }
-
       const tileMap = {
         '🀀': 'ton', '🀁': 'nan', '🀂': 'xia', '🀃': 'pei',
         '🀄': 'chun', '🀅': 'hatsu', '🀆': 'haku',
@@ -639,10 +674,9 @@
         '🀜': '4pin', '🀝': '5pin', '🀞': '6pin',
         '🀟': '7pin', '🀠': '8pin', '🀡': '9pin'
       };
-
       const tiles = Object.keys(tileMap);
-      const isMobile = window.innerWidth < 768; // 判断是否为手机端
-      const count = isMobile ? 15 : 25;         // 手机端只生成 15 个，电脑端 25 个
+      const isMobile = window.innerWidth < 768; 
+      const count = isMobile ? 14 : 25;         
       const svgNS = 'http://www.w3.org/2000/svg';
 
       for (let i = 0; i < count; i++) {
@@ -651,16 +685,13 @@
 
         const wrapper = document.createElement('span');
         wrapper.className = 'mahjong-tile';
-
         const svg = document.createElementNS(svgNS, 'svg');
-        // 关键：不要自己设 viewBox，让 SVG 自己决定，或者根据实际大小调整
         svg.setAttribute('viewBox', '0 0 300 400');
         svg.style.width = '100%';
         svg.style.height = '100%';
         svg.style.display = 'block';
 
         const use = document.createElementNS(svgNS, 'use');
-        // 关键：只写 #id，不带 ./images/... 路径
         use.setAttribute('href', `#${targetId}`);
 
         svg.appendChild(use);
@@ -681,11 +712,16 @@
       }
     }
 
-
     document.addEventListener('DOMContentLoaded', () => {
+      // 需求1: 读取 URL 中的参数。如果有 ?lang=ja 则加载日语版
+      const params = new URLSearchParams(window.location.search);
+      const langParam = params.get('lang');
+      if (langParam === 'ja' || langParam === 'zh') {
+        currentLang = langParam;
+      }
+
       initMahjongBackground();
       updateDOMText();
-      // 初始化导航状态
       switchPage('info');
     });
   </script>
