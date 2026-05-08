@@ -158,10 +158,10 @@
         <div class="cyber-border bg-cyber-dark/90 p-10 md:p-20 border border-cyber-cyan/40 rounded-3xl text-center max-w-4xl mx-4 shadow-2xl relative overflow-hidden">
           
           <div class="relative inline-flex items-center justify-center min-h-[200px] min-w-[200px] md:min-h-[350px] md:min-w-[350px] mb-8">
-            <img src="./images/PKU.png" class="absolute -top-16 -left-10 md:-top-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tl">
-            <img src="./images/UTokyo.png" class="absolute -top-16 -right-10 md:-top-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tr">
-            <img src="./images/KyotoU.png" class="absolute -bottom-16 -left-10 md:-bottom-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-bl">
-            <img src="./images/THU.png" class="absolute -bottom-16 -right-10 md:-bottom-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-br">
+            <img src="./images/PKU.png" fetchpriority="low" class="absolute -top-16 -left-10 md:-top-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tl">
+            <img src="./images/UTokyo.png" fetchpriority="low" class="absolute -top-16 -right-10 md:-top-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-tr">
+            <img src="./images/KyotoU.png" fetchpriority="low" class="absolute -bottom-16 -left-10 md:-bottom-24 md:-left-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-bl">
+            <img src="./images/THU.png" fetchpriority="low" class="absolute -bottom-16 -right-10 md:-bottom-24 md:-right-15 w-40 h-40 md:w-64 md:h-64 object-contain opacity-50 z-0 pointer-events-none filter blur-[0px] hover:blur-0 transition-all" alt="decoration-br">
 
             <h1 data-i18n="hero.title" class="relative z-10 text-5xl md:text-8xl font-black neon-text-cyan font-cjk"></h1>
           </div>
@@ -694,7 +694,7 @@
     // 建立一个队伍卡片
     function buildTeamCard(team) {
       const cardDiv = document.createElement('div');
-      cardDiv.className = 'bg-white/5 rounded-2xl p-8 cyber-border max-w-[60rem] mx-auto mb-8';
+      cardDiv.className = 'bg-white/5 rounded-2xl p-8 cyber-border max-w-[70rem] mx-auto mb-8';
 
       // 头部（队名+队徽占位）
       const headerDiv = document.createElement('div');
@@ -711,7 +711,7 @@
       const tableWrapper = document.createElement('div');
       tableWrapper.className = 'overflow-x-auto rounded-lg border border-white/10';
       const grid = document.createElement('div');
-      grid.className = 'grid grid-cols-[100px_1.2fr_1.1fr_1fr_1.2fr_1.6fr_1fr_1.6fr] text-sm text-gray-300';
+      grid.className = 'grid grid-cols-[100px_1.2fr_1.1fr_1fr_1.2fr_1.6fr_1fr_1.6fr] text-sm text-gray-300 min-w-[60rem]';
 
       // 表头（带 i18n）
       const headerCells = [
@@ -753,7 +753,7 @@
           avatarCell.className = 'px-3 py-3 flex items-center justify-center border-b border-white/5';
           if (player.avatar) {
             avatarCell.innerHTML = `<div class="w-16 h-16 rounded-full bg-gray-700 overflow-hidden">
-              <img src="${player.avatar}" alt="avatar" loading="lazy" decoding="async" class="w-full h-full object-cover">
+              <img src="${player.avatar}" alt="avatar" fetchpriority="low" decoding="async" class="w-full h-full object-cover">
             </div>`;
           } else {
             avatarCell.innerHTML = `<div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-xs"></div>`;
