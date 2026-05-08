@@ -682,7 +682,7 @@
     // 创建单元格辅助函数
     function createCell(text, noI18n = false) {
       const cell = document.createElement('div');
-      cell.className = 'px-3 py-3 border-b border-white/5  min-w-0';
+      cell.className = 'px-3 py-3 border-b border-white/5 min-w-0 break-words';
       if (!noI18n && text) {
         cell.textContent = text;
       } else {
@@ -726,7 +726,7 @@
       ];
       headerCells.forEach(cell => {
         const div = document.createElement('div');
-        div.className = 'bg-gray-800/50 text-cyber-cyan px-3 py-3';
+        div.className = 'bg-gray-800/50 text-cyber-cyan px-3 py-3 min-w-0 break-words';
         if (cell.style) {
           cell.style.split(' ').forEach(cls => div.classList.add(cls));
         }
@@ -752,9 +752,11 @@
           const avatarCell = document.createElement('div');
           avatarCell.className = 'px-3 py-3 flex items-center justify-center border-b border-white/5';
           if (player.avatar) {
-            avatarCell.innerHTML = `<img src="${player.avatar}" alt="avatar" class="w-16 h-16 rounded-full object-cover">`;
+            avatarCell.innerHTML = `<div class="w-16 h-16 rounded-full bg-gray-700 overflow-hidden">
+              <img src="${player.avatar}" alt="avatar" loading="lazy" decoding="async" class="w-full h-full object-cover">
+            </div>`;
           } else {
-            avatarCell.innerHTML = `<div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-xs"> </div>`;
+            avatarCell.innerHTML = `<div class="w-16 h-16 rounded-full bg-gray-700 flex items-center justify-center text-xs"></div>`;
           }
 
           // 昵称（硬编码，不翻译）
@@ -765,12 +767,12 @@
           
           // 身份（i18n）
           const statusCell = document.createElement('div');
-          statusCell.className = 'px-3 py-3 border-b border-white/5';
+          statusCell.className = 'px-3 py-3 border-b border-white/5 min-w-0 break-words';
           statusCell.innerHTML = `<span data-i18n="${player.statusKey}">${getI18nDefault(player.statusKey)}</span>`;
           
           // 段位（i18n）
           const rankCell = document.createElement('div');
-          rankCell.className = 'px-3 py-3 border-b border-white/5';
+          rankCell.className = 'px-3 py-3 border-b border-white/5 min-w-0 break-words';
           rankCell.innerHTML = `<span data-i18n="${player.rankKey}">${getI18nDefault(player.rankKey)}</span>`;
           
           // 玩家名（硬编码）
@@ -778,7 +780,7 @@
           
           // 役种（i18n）
           const yakuCell = document.createElement('div');
-          yakuCell.className = 'px-3 py-3 border-b border-white/5';
+          yakuCell.className = 'px-3 py-3 border-b border-white/5 min-w-0 break-words';
           if (player.yakuKey) {
             yakuCell.innerHTML = `<span data-i18n="${player.yakuKey}">${getI18nDefault(player.yakuKey)}</span>`;
           }
@@ -831,8 +833,8 @@
         currentLang = langParam;
       }
       await loadTeams();
-      initMahjongBackground();
       updateDOMText();
+      initMahjongBackground();
       switchPage('info');
     });
   </script>
