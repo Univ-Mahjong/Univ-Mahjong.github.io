@@ -91,7 +91,7 @@
         "playerName": "オーラス勝負",
         "yakuKey": "yaku.riichi",
         "hobby": "歌うこと",
-        "avatar": ""
+        "avatar": "./images/players/utokyo/3.jpeg"
       },
       {
         "nickname": "サワ",
@@ -112,6 +112,16 @@
         "yakuKey": "yaku.tanyao",
         "hobby": "ゲーム音楽鑑賞、耳コピ、制作",
         "avatar": "./images/players/utokyo/5.jpeg"
+      },
+      {
+        "nickname": "いだてん",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.tenhou.4",
+        "playerName": "陸奥の韋駄天",
+        "yakuKey": "yaku.rinshan_kaihou",
+        "hobby": "野球観戦",
+        "avatar": "./images/players/utokyo/6.jpeg"
       }
     ]
   },
