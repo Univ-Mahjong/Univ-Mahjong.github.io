@@ -423,6 +423,7 @@
       "rank.tenhou.7": { zh: "天凤七段", ja: "天鳳七段" },
       "rank.tenhou.8": { zh: "天凤八段", ja: "天鳳八段" },
       "rank.tenhou.9": { zh: "天凤九段", ja: "天鳳九段" },
+      "rank.tenhou.4": { zh: "天凤四段", ja: "天鳳四段" },
 
       // 役种
       "yaku.riichi": { zh: "立直", ja: "リーチ" },
@@ -435,6 +436,7 @@
       "yaku.mixed_triple_straight": { zh: "混全带幺九", ja: "混全帯么九" },
       "yaku.ryanpeikou": { zh: "两杯口", ja: "二盃口" },
       "yaku.pinfu": { zh: "平和", ja: "平和" },
+      "yaku.rinshan_kaihou": { zh: "岭上开花", ja: "嶺上開花" },
       "yaku.fukuro_sanshoku": { 
         zh: "副露三色，岭上nomi，抢杠nomi", 
         ja: "副露三色、嶺上ノミ、搶槓ノミ" 
@@ -833,8 +835,8 @@
         currentLang = langParam;
       }
       await loadTeams();
-      updateDOMText();
       initMahjongBackground();
+      updateDOMText();
       switchPage('info');
     });
   </script>
