@@ -32,7 +32,7 @@
         "rankKey": "rank.tenhou.8",
         "playerName": "月刊少年Blackie",
         "yakuKey": "yaku.riichi",
-        "hobby": "",
+        "hobby": "Jpop、Overwatch",
         "avatar": "./images/players/pku/3.png"
       },
       {
@@ -63,6 +63,16 @@
     "name": { "zh": "東京大学", "ja": "東京大学" },
     "info": { "zh": "東京大学代表队", "ja": "東京大学チーム" },
     "players": [
+      {
+        "nickname": "シン即リーー",
+        "role": "Captain",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.mahjongsoul.beginner",
+        "playerName": "シン即リーー",
+        "yakuKey": "yaku.chitoitsu",
+        "hobby": "漫画、野球観戦",
+        "avatar": "./images/players/utokyo/7.jpeg"
+      },
       {
         "nickname": "かーーふ",
         "role": "Member",
@@ -203,11 +213,72 @@
       }
     ]
   },
-  {
+   {
     "id": "kyoto",
     "teamKey": "team4",
     "name": { "zh": "京都大学", "ja": "京都大学" },
     "info": { "zh": "京都大学代表队", "ja": "京都大学チーム" },
-    "players": []
+    "players": [
+      {
+        "nickname": "げんぶ",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.tenhou.6",
+        "playerName": "genbu_",
+        "yakuKey": "yaku.honiisou",
+        "hobby": "Shadowverse、音楽ゲーム",
+        "avatar": "./images/players/kyotou/1.png"
+      },
+      {
+        "nickname": "かんたろー",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.tenhou.7",
+        "playerName": "かんたろー@",
+        "yakuKey": "yaku.pinfu",
+        "hobby": "音楽、麻雀",
+        "avatar": "./images/players/kyotou/2.jpeg"
+      },
+      {
+        "nickname": "ふわふわ",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.mahjongsoul.saint2",
+        "playerName": "ふわふわニャン",
+        "yakuKey": "yaku.riichi",
+        "hobby": "カードゲーム、アニメ鑑賞",
+        "avatar": ""
+      },
+      {
+        "nickname": "アラサーだよ!!",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.tenhou.9",
+        "playerName": "アラサーだよ!!",
+        "yakuKey": "yaku.tanyao_dora3",
+        "hobby": "料理",
+        "avatar": "./images/players/kyotou/4.jpg"
+      },
+      {
+        "nickname": "こばし",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.mahjongsoul.saint3",
+        "playerName": "～邪王心眼～",
+        "yakuKey": "yaku.chitoitsu",
+        "hobby": "睡眠",
+        "avatar": "./images/players/kyotou/5.jpeg"
+      },
+      {
+        "nickname": "Kogni",
+        "role": "Member",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.mahjongsoul.soulsky",
+        "playerName": "Kogni",
+        "yakuKey": "yaku.riichi",
+        "hobby": "筋トレ",
+        "avatar": "./images/players/kyotou/6.jpeg"
+      }
+    ]
   }
 ]
