@@ -4,6 +4,7 @@
     "teamKey": "team1",
     "name": { "zh": "北京大学", "ja": "北京大学" },
     "info": { "zh": "北京大学代表队", "ja": "北京大学チーム" },
+    "logo": "./images/players/pku/0.png",
     "players": [
       {
         "nickname": "智乃",
@@ -12,7 +13,7 @@
         "rankKey": "rank.mahjongsoul.soulsky",
         "playerName": "紫菜麻酱杏杏",
         "yakuKey": "yaku.sanshoku_doukou",
-        "hobby": "",
+        "hobby": "プロセカ",
         "avatar": "./images/players/pku/1.jpg"
       },
       {
@@ -54,6 +55,16 @@
         "yakuKey": "",
         "hobby": "",
         "avatar": ""
+      },
+      {
+        "nickname": "xzy",
+        "role": "Member",
+        "statusKey": "status.graduate",
+        "rankKey": "rank.tenhou.8",
+        "playerName": "Miyanaga__saki",
+        "yakuKey": "yaku.chitoitsu",
+        "hobby": "打牌/轻度dota2/轻度唱k",
+        "avatar": "./images/players/pku/6.gif"
       }
     ]
   },
