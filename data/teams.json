@@ -220,6 +220,16 @@
     "info": { "zh": "京都大学代表队", "ja": "京都大学チーム" },
     "players": [
       {
+        "nickname": "いぬ",
+        "role": "Manager",
+        "statusKey": "status.undergraduate",
+        "rankKey": "rank.mahjongsoul.saint2",
+        "playerName": "もりやまみん",
+        "yakuKey": "yaku.honiisou",
+        "hobby": "",
+        "avatar": "./images/players/kyotou/7.jpeg"
+      },
+      {
         "nickname": "げんぶ",
         "role": "Member",
         "statusKey": "status.undergraduate",
@@ -247,7 +257,7 @@
         "playerName": "ふわふわニャン",
         "yakuKey": "yaku.riichi",
         "hobby": "カードゲーム、アニメ鑑賞",
-        "avatar": ""
+        "avatar": "./images/players/kyotou/3.jpg"
       },
       {
         "nickname": "アラサーだよ!!",
