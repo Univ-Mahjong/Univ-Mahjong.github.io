@@ -229,6 +229,7 @@
     "teamKey": "team4",
     "name": { "zh": "京都大学", "ja": "京都大学" },
     "info": { "zh": "京都大学代表队", "ja": "京都大学チーム" },
+    "logo": "./images/players/kyotou/0.jpg",
     "players": [
       {
         "nickname": "いぬ",
